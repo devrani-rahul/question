@@ -14,12 +14,12 @@
         <button id="generate-btn">Generate Questions</button>
         
         <div id="question-list">
-            <!-- Generated questions will appear here -->
+            
         </div>
     </div>
 
     <footer>
-        <p>Designed by <a href="https://github.com/rahul" target="_blank">Rahul</a></p>
+        <p>Designed by <a href="https://github.com/rahul-devrani" target="_blank">Rahul</a></p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,15 +29,12 @@
             if(topic) {
                 $.post('/generate', {topic: topic}, function(response) {
                     var questionList = $('#question-list');
-                    questionList.empty();  // Clear any previous questions
+                    questionList.empty();  
                     if(response.questions && response.questions.length > 0) {
                         response.questions.forEach(function(question, index) {
-                            questionList.append('<p>Q' + (index + 1) + ': ' + question + '</p>');
-                        });
+                            questionList.append('<p>Q' + (index + 1) + ': ' + question + '</p>');});
                     } else {
-                        questionList.append('<p>Error: No questions generated.</p>');
-                    }
-                });
+                        questionList.append('<p>Error: No questions generated.</p>');}});
             } else {
                 alert("Please enter a topic.");
             }
